@@ -1,22 +1,26 @@
 /*
-javac -encoding UTF-8 NumberThis.java
-java NumberThis
+javac -encoding UTF-8 YCNo24.java
+java YCNo24
 */
 import java.util.*;
-public class NumberThis{
+public class YCNo24{
 	public static void main(String[] args) throws Exception{
 		
 		Scanner scan = new Scanner(System.in);
-		String loop = scan.nextLine();
+		String loop = null;
 		
-		String line = null;
+		Boolean result = true;
+		while(result){
+			loop = scan.nextLine();
+			result = (Integer.valueOf(loop) > 1 && Integer.valueOf(loop) < 10)? false : true;
+		}
+		
 		String[] input = null;
 		List<String> list = new ArrayList<String>(Arrays.asList("0","1","2","3","4","5","6","7","8","9"));
 		List<String> resultList = new ArrayList<String> ();
 		
 		for(int i = 0 ; i < Integer.valueOf(loop) ; i++){
-			line = scan.nextLine();
-			input = line.split(" ");
+			input = scan.nextLine().split(" ");
 			
 			if(input[input.length-1].equals("YES")){
 				for(String str : input){
@@ -37,6 +41,6 @@ public class NumberThis{
 				}
 			}
 		}
-		list.forEach(result -> System.out.println(result));
+		list.forEach(thisNumber -> System.out.println(thisNumber));
 	}
 }
