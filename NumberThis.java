@@ -36,6 +36,7 @@ public class NumberThis{
 					}
 				}
 			}
+
 		}
 		list.forEach(result -> System.out.println(result));
 	}
