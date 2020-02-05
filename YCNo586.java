@@ -11,10 +11,10 @@ public class YCNo586{
 		YCNo586 obj = new YCNo586();
 		Scanner scan = new Scanner(System.in);
 		try{	
-			int lodgmentFee = obj.fee(scan,true);
-			int replacementFee = obj.fee(scan,true);
-			int reservationCount = obj.reservationCount(scan,true);
-			obj.listAllocation(scan,reservationCount,true);
+			int lodgmentFee = obj.fee(scan);
+			int replacementFee = obj.fee(scan);
+			int reservationCount = obj.reservationCount(scan);
+			obj.listAllocation(scan,reservationCount);
 			obj.lossDecision(lodgmentFee,replacementFee);
 		}catch(Exception e){
 			;
@@ -22,42 +22,58 @@ public class YCNo586{
 			scan.close();
 		}
 	}
-	private int fee(Scanner scan,boolean flag){
+	/**
+	 * 金額範囲指定
+	 * @param スキャナー変数
+	 * @return fee
+	 */
+	private int fee(Scanner scan){
+		boolean flag = false;
 		int fee = 0;
-		while(flag){
+		while( !flag ){
 			fee = scan.nextInt();
-			flag = fee >= 1 && fee <= 100000 ?false:true;
+			flag = fee >= 1 && fee <= 100000 ?true:false;
 		}
 		return fee;
 	}
-	private int reservationCount(Scanner scan,boolean flag){
-		boolean result = true;
+	/**
+	 * 予約数指定
+	 * @param スキャナー変数
+	 * @return reservationCount
+	 */
+	private int reservationCount(Scanner scan){
+		boolean flag = false;
 		int reservationCount = 0;
-		while(flag){
+		while( !flag ){
 			reservationCount = scan.nextInt();scan.nextLine();
-			flag = reservationCount >= 1 && reservationCount <= 100 ?false:true;
+			flag = reservationCount >= 1 && reservationCount <= 100 ?true:false;
 		}
 		return reservationCount;
 	}
-	private void listAllocation(Scanner scan ,int reservationCount,boolean flag){
-		List<String> duplicateList = new ArrayList<String>();
-		List<String> roomList = new ArrayList<String>();
+	/**
+	 * 重複振り分け
+	 * @param スキャナー変数、予約数
+	 */
+	private void listAllocation(Scanner scan ,int reservationCount){
+		boolean flag = false;
 		String roomNo = null;
 		for(int i = 0 ; i < reservationCount ; i++){
-			while(flag){
+			while( !flag ){
 				roomNo = scan.nextLine();
-				flag = Integer.valueOf(roomNo) >= 1 && Integer.valueOf(roomNo) <= 999 ? false:true;
+				flag = Integer.valueOf(roomNo) >= 1 && Integer.valueOf(roomNo) <= 999 ? true:false;
 			}
 			if(roomList.contains(roomNo)){
-				duplicateList.add(roomNo);
+				this.duplicateList.add(roomNo);
 			}else{
-				roomList.add(roomNo);
+				this.roomList.add(roomNo);
 			}
-			flag = true;
+			flag = false;
 		}
-		this.duplicateList = duplicateList;
-		this.roomList = roomList;
 	}
+	/**
+	 * 判定
+	 * @param ホテル代、ホテル差し替え代
+	 */
 	private void lossDecision(int lodgmentFee,int replacementFee){
 		if(duplicateList.size() > 0){
 			int lossPrice = lodgmentFee + replacementFee;
