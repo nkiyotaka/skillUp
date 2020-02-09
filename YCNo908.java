@@ -14,7 +14,7 @@ public class YCNo908{
         	char work;
         	for(int i = 0 ; i < loop ; i++){
         		work = line.charAt(i);
-        		if(i % 2 == 0 && !regexp(Character.toString(work))){
+        		if(i % 2 == 0 && !Pattern.matches("^[a-z]+$", Character.toString(work))){
         			flag = false;
         		}
         		if(i % 2 == 1 && !(work == ' ')){
@@ -27,13 +27,5 @@ public class YCNo908{
         }finally{
         	sc.close();
         }
-    }
-    /**
-	 * 英小小文字判定（正規表現）
-	 * @param 文字（1文字）
-	 * @return true／false
-	 */
-    private static boolean regexp(String work){
-    	return Pattern.matches("^[a-z]+$", work);
     }
 }
