@@ -9,8 +9,8 @@ public class YCNo410{
 		try(Scanner sc = new Scanner(System.in)){
 			int[] A = coordinatePoint(sc);
 			int[] B = coordinatePoint(sc);
-			int Ax_By = calculation(A[0],B[1]);
-			int Ay_Bx = calculation(A[1],B[0]);
+			int Ax_By = calculation(A[0],B[0]);
+			int Ay_Bx = calculation(A[1],B[1]);
 			result(Ax_By+Ay_Bx);
 		}catch(Exception e){
 			;
@@ -49,9 +49,10 @@ public class YCNo410{
 	* @param x軸、y軸
 	* @return
 	*/
-	private static int calculation(int x,int y){
-		if(x < 0 && y < 0){return -x + -y;}
-		return x + y;
+	private static int calculation(int Ax,int By){
+		int answer = Ax - By;
+		if(answer < 0){return -answer;}
+		else{return answer;}
 	}
 	/**
 	* 結果表示
