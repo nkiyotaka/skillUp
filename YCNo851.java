@@ -9,7 +9,6 @@ public class YCNo851{
 		try(Scanner sc = new Scanner(System.in)){
 			int loop = 0;
 			List<Long> list = new ArrayList<Long>();
-			StringBuilder sb = null;
 			boolean processDecision = true;
 			do{
 				loop = sc.nextInt();sc.nextLine();
