@@ -7,11 +7,11 @@ import java.util.*;
 public class YCNo799{
 	public static void main(String[] args){
 		try(Scanner sc = new Scanner(System.in)){
-			int redBox1 = onceSpot(sc), redBox2 = secondTime(sc,redBox1);
-			int brackBox1 = onceSpot(sc), brackBox2 = secondTime(sc,brackBox1);
-			int[] array1 = contentSet(redBox1,redBox2);
-			int[] array2 = contentSet(brackBox1,brackBox2);
-			result(array1,array2);
+			int redCard1 = onceSpot(sc), redCard2 = secondTime(sc,redCard1);
+			int brackCard1 = onceSpot(sc), brackCard2 = secondTime(sc,brackCard1);
+			int[] redBox = contentSet(redCard1,redCard2);
+			int[] brackBox = contentSet(brackCard1,brackCard2);
+			result(redBox,brackBox);
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -24,30 +24,30 @@ public class YCNo799{
 	*/
 	private static int onceSpot(Scanner sc){
 		boolean flag = true;
-		int card1 = 0;
+		int card = 0;
 		while(flag){
-			card1 = sc.nextInt();
-			flag = noCheck(card1);
+			card = sc.nextInt();
+			flag = cardCheck(card);
 		}
-		return card1;
+		return card;
 	}
 	/**
 	* 取得したカードが適正値であるか判定
 	* @param カード
 	* @return
 	*/
-	private static boolean noCheck(int card){
+	private static boolean cardCheck(int card){
 		if(card >= 1 && card <= 100){return false;}
-		return false;
+		return true;
 	}
 	/**
 	* 二つ目の箱からカード取得（一つ目のカードより高いことが条件）
 	* @param スキャナー変数、一つ目のカード
 	* @return
 	*/
-	private static int secondTime(Scanner sc,int redBox1){
+	private static int secondTime(Scanner sc,int card1){
 		int card2 = 0;
-		while( !(redBox1 <= card2) ){
+		while( !(card1 <= card2) ){
 			card2 = onceSpot(sc);
 		}
 		return card2;
@@ -57,22 +57,22 @@ public class YCNo799{
 	* @param 一つ目のカード、二つ目のカード
 	* @return
 	*/
-	private static int[] contentSet(int box1,int box2){
-		int[] array = new int[(box2-box1)+1];
-		for(int i = box1,cnt = 0 ; i <= box2 ; i++,cnt++){
-			array[cnt] = i;
+	private static int[] contentSet(int card1,int card2){
+		int[] box = new int[(card2-card1)+1];
+		for(int i = card1,cnt = 0 ; i <= card2 ; i++,cnt++){
+			box[cnt] = i;
 		}
-		return array;
+		return box;
 	}
 	/**
 	* 結果表示
 	* @param 赤の全カード、黒の全カード
 	* @return
 	*/
-	private static void result(int[] array1,int[] array2){
+	private static void result(int[] redBox,int[] brackBox){
 		int counter = 0;
-		for(int a : array1){
-			for(int b : array2){
+		for(int a : redBox){
+			for(int b : brackBox){
 				if(a != b){
 					counter++;
 				}
