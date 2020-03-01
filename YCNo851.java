@@ -11,7 +11,7 @@ public class YCNo851{
 			List<Long> list = new ArrayList<Long>();
 			boolean processDecision = true;
 			do{
-				loop = sc.nextInt();sc.nextLine();
+				loop = Integer.parseInt(sc.nextLine());
 			}while(loopDecision(loop));
 			
 			do{
