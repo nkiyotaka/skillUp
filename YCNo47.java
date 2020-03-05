@@ -14,7 +14,7 @@ public class YCNo47{
 				flag = numCheck(biscuit);
 			}
 			int magicCnt = 0;
-			int counter = 1;
+			int counter = 0;
 			while( !flag ){
 				magicCnt = counter;
 				if(Math.pow(2,counter) >= biscuit){
