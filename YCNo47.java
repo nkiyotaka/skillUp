@@ -7,22 +7,15 @@ import java.util.*;
 public class YCNo47{
 	public static void main(String[] args){
 		try(Scanner sc = new Scanner(System.in)){
-			boolean flag = true;
 			int biscuit = 0;
-			while(flag){
+			while(numCheck(biscuit)){
 				biscuit = sc.nextInt();
-				flag = numCheck(biscuit);
 			}
 			int magicCnt = 0;
-			int counter = 0;
-			while( !flag ){
-				magicCnt = counter;
-				if(Math.pow(2,counter) >= biscuit){
-					System.out.println(magicCnt);
-					break;
-				}
-				counter++;
+			while( !(Math.pow(2,magicCnt) >= biscuit) ){
+				magicCnt++;
 			}
+			System.out.println(magicCnt);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
