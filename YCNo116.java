@@ -5,10 +5,7 @@ java YCNo116
 import java.util.*;
 
 public class YCNo116{
-	private static int counter = 0;
-	
 	public static void main(String[] args){
-		List<String> list = null;
 		try(Scanner sc = new Scanner(System.in)){
 			int num = 0;
 			do{
@@ -18,17 +15,19 @@ public class YCNo116{
 			do{
 				kadomatsu = sc.nextLine().split(" ");
 			}while(kadomatuCheck(kadomatsu));
+			List<String> list = null;
+			int result = 0;
 			for(int i = 0 ; i < kadomatsu.length - 2 ; i++){
 				list = Arrays.asList(kadomatsu[i],kadomatsu[i+1],kadomatsu[i+2]);
-				kadomatsuColumn(new ArrayList<String>(new LinkedHashSet<>(list)));
+				result += kadomatsuColumn(new ArrayList<String>(new LinkedHashSet<>(list)));
 			}
-			System.out.println(counter);
+			System.out.println(result);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	/**
-	*門松の本数の指定範囲内かのチェック
+	*門松の本数が指定範囲内かのチェック
 	* @param 数字
 	* @return
 	*/
@@ -56,7 +55,8 @@ public class YCNo116{
 	* @param リスト
 	* @return
 	*/
-	private static void kadomatsuColumn(List<String> list){
+	private static int kadomatsuColumn(List<String> list){
+		int counter = 0;
 		if(list.size() == 3){
 			String max = list.stream().max((a1, a2) -> a1.compareTo(a2)).get();
 			String min = list.stream().min((a1, a2) -> a1.compareTo(a2)).get();
@@ -64,5 +64,6 @@ public class YCNo116{
 				counter++;
 			}
 		}
+		return counter;
 	}
 }
