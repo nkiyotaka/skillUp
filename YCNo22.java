@@ -41,7 +41,7 @@ public class YCNo22{
 	*/
 	private static boolean characterPattern(String[] line){
 		for(String s : line){
-			if( !(s.equals("(")) && !(s.equals(")")) ){
+			if( !(s.matches("[()]+")) ){
 				return true;
 			}
 		}
@@ -67,7 +67,7 @@ public class YCNo22{
 		}else if(list.get(index-1).equals(")") && list.size() > 1){
 			result = index-1;
 			list.subList(index-1,list.size()).clear();
-			Collections.sort(list, (a, b) -> {return b.compareTo(a);});
+			Collections.reverse(list);
 			for(String str : list){
 				if(str.equals(")")){cnt++;}
 				if(str.equals("(")){cnt--;}
