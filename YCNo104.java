@@ -16,7 +16,7 @@ public class YCNo104{
 				}else{
 					array = branch.split("");
 				}
-			}while(characterCheck(array));
+			}while(isEnabled(array));
 			int result = 1;
 			for(int i =  0; i < array.length ; i++){
 				result = array[i].equals("L")? result * 2 : result * 2 + 1;
@@ -27,21 +27,19 @@ public class YCNo104{
 		}
 	}
 	/**
-	*文字チェック
+	*文字が有効か判定
 	* @param 文字列
 	* @return 真偽値
 	*/
-	private static boolean characterCheck(String[] line){
-		if(0 <= line.length && line.length <= 30){
-			for(String s : line){
-				if( !(s.matches("[LR]")) ){
-					return true;
-				}
-			}
-		}else{
+	private static boolean isEnabled(String[] line){
+		if(line.length < 1 && line.length > 30){
 			return true;
 		}
+		for(String s : line){
+			if( !(s.matches("[LR]")) ){
+				return true;
+			}
+		}
 		return false;
-		
 	}
 }
