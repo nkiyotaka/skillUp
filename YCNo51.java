@@ -11,11 +11,11 @@ public class YCNo51{
 			int W;
 			do{
 				W = sc.nextInt();
-			}while(rangeCheck(W));
+			}while(isEnabled(W));
 			int D;
 			do{
 				D = sc.nextInt();
-			}while(rangeCheck(D));
+			}while(isEnabled(D));
 			int result = W;
 			for(int i = D ; i > 1 ; i--){
 				result -= Math.floor(result / Math.pow(i,2));
@@ -26,11 +26,11 @@ public class YCNo51{
 		}
 	}
 	/**
-	*作業量／納期の指定範囲内かのチェック
+	*作業量／納期が有効な範囲かの判定
 	* @param 作業量／納期
 	* @return 真偽値
 	*/
-	private static boolean rangeCheck(int target){
+	private static boolean isEnabled(int target){
 		if( !(1 <= target && target <= Math.pow(10,5)) ){
 			return true;
 		}
