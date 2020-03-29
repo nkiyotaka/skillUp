@@ -10,7 +10,7 @@ public class YCNo83{
 			int matchstick;
 			do{
 				matchstick = sc.nextInt();
-			}while(isEnabled(matchstick));
+			}while( !isEnabled(matchstick) );
 			int[] array = new int[matchstick/2];
 			boolean result = (matchstick % 2 == 0)? true:false;
 			if(result){
@@ -20,6 +20,7 @@ public class YCNo83{
 				Arrays.fill(array,1,array.length,1);
 			}
 			Arrays.stream(array).forEach(a -> System.out.print(a));
+			System.out.println();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -31,8 +32,8 @@ public class YCNo83{
 	*/
 	private static boolean isEnabled(int target){
 		if( !(2 <= target && target <= Math.pow(10,5)) ){
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 }
