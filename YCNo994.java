@@ -22,6 +22,7 @@ public class YCNo994{
 			
 			sc.nextLine();
 			Map<Integer,Integer> map = new HashMap<>();
+			map.put(0,coin);
 			for(int i = 0 ; i < tree-1 ; i++){
 				int treeVertex,coinNumber;
 				do{
@@ -31,7 +32,7 @@ public class YCNo994{
 				map.put(treeVertex,coinNumber);
 			}
 			
-			result(map,coin);
+			result(map,tree,coin);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -73,21 +74,24 @@ public class YCNo994{
 	}
 	/**
 	* コインの枚数に応じて結果出力
-	* @param マップ（コイン枚数、渡す木の頂点）、コイン
-	* @return 真偽値
+	* @param マップ（key:木の頂点、value:コイン数）、木の頂点の数、コイン
 	*/
-	private static void result(Map<Integer,Integer> map,int coin){
-		int cnt =  0;
-		boolean result = false;
-		for(int i : map.values()){
-			if(i == 1 && coin != 1){
-				cnt++;
-				coin--;
+	private static void result(Map<Integer,Integer> map,int tree,int coin){
+		int count =  0;
+		if(tree >= coin){
+			for(int coinNum : map.values()){
+				if(coinNum == 1 && coin != 1){
+					count++;
+					coin--;
+					map.put(0,map.get(0) - 1);
+				}
 			}
-			if(coin == 1 || coin == 0){
-				result = true;
+			if(map.get(0) > 1){
+				count += map.get(0) - 1;
 			}
+			System.out.println(count);
+		}else{
+			System.out.println(-1);
 		}
-		System.out.println(result ? cnt : -1);
 	}
 }
