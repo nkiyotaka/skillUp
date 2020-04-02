@@ -44,10 +44,8 @@ public class YCNo299{
 			System.out.println(versionTwo);
 		}else{
 			long result = 0;
-			for(long i = 1 ; i < versionNumber ; i++){
-				result = i * versionUpPageNumber;
-			}
-			System.out.println(result += versionOne);
+			result = (versionNumber-1) * versionUpPageNumber + versionOne;
+			System.out.println(result);
 		}
 	}
 }
