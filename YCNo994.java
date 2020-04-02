@@ -66,11 +66,11 @@ public class YCNo994{
 	*/
 	private static boolean isChecked(int... check){
 		for(int i = 0 ; i < check.length-1 ; i++){
-			if(MIN_COIN <= check[i] && check[i] <= check[2]){
-				return true;
+			if( !(MIN_COIN <= check[i] && check[i] <= check[2]) ){
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 	/**
 	* コインの枚数に応じて結果出力
