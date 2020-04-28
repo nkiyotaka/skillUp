@@ -22,7 +22,11 @@ public class YCNo401{
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	* 入力数字が有効な範囲か判定
+	* @param 入力数字
+	* @return 真偽値
+	*/
 	private static boolean isNum(int target){
 		if(1 <= target && target <= 30){
 			return true;
